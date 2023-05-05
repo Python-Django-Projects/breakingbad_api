@@ -1,17 +1,21 @@
+import 'package:breakingbad_api/app_routers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BreakingBadApp(
+    appRouter: AppRouter(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BreakingBadApp extends StatelessWidget {
+  final AppRouter appRouter;
 
+  const BreakingBadApp({super.key, required this.appRouter});
   @override
   Widget build(BuildContext context) {
-    
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: appRouter.generateRoute,
     );
   }
 }
